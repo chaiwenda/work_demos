@@ -1,37 +1,30 @@
 import os
+def file_extension(path):
+  return os.path.splitext(path)[1]
 
-matchList = [41,54,60,62,78,80,
-            126,238,290,320,336,340,364,396,
-            443,468,481,487,
-            507,586,
-            656,670,686,694,
-            857,867,899,883,869,
-            972,942,940,934,932,996,
-            1019,1016,1008,1006,1000,1020,1021,1029,1031,1032,1046,1062,1050,1048,1066,
-            1141,1219,1196,
-            1224,1245,1233,1246,1239,1247,1252,1253,1254,1255,1261,1270,1269,1267,1271,1272,1273,1274,1275,1281,1282,1299,1298,1297,1290,1288,
-            1328,1362,1388,1399,
-            1404,1420,1414,1412,1406,1450,1452,1436,1430,1428,1464,1462,1460,
-            1528,1520,1516,1508,1506,1504,1496,1502,1510,1512,1514,1515,1518,1521,1529,1532,1546,1544,1542,1540,1554,1553,1552,1550,1548,
-            1555,1556,1558,1550,1561,1562,1570,1569,1568,1566,1564,1563,1576,
-            1578,1582,1584,1594,1592,1590,1588,1586,1594,1598,
-            1600,1610,1614,1622,1626,1630,1632,1638,1640,1642,1644,1652,1654,1656,1658,1659,1660,1662,1666,1666,1668,1672,1674,1676,1684,1690,1698,
-            1701,1702,1706,1726,1727,1745,1775,1786,
-            1807,1809,1813,1815,1817,1845,1858,1865,1871,1872,1886,1887,
-            1901,1913,1915,1917,1931,1933,1939,1953,1988,
-            2029,2035,2097,2099,2203,2241,2269,
-            2419,2491,2499,
-            2628,2627,2629,2634,2635,2642,2646,2650,2654,2658,2659,2661,2662,
-            2707,2709,2725,
-            2898,2886,
-            2962]
 delList = []
+jpgList = []
+xmlList = []
 delDir = "C:/Users/chaiwenda/Desktop/MaiDong"
 delList = os.listdir(delDir)
+print(delList)
+print(delList.index('MaiDong_0026.xml'))
 
-for f in delList:
-    # print("MaiDong_" + str(f))
-    name_file_remove = "MaiDong_" + str(f)
-    if name_file_remove in f:
-        print("删除文件" + name_file_remove)
-        os.remove("C:/Users/chaiwenda/Desktop/MaiDong/" + name_file_remove)
+for name in delList:
+    file_name = name # 去当前要匹配的文件名（）
+
+    # acquire filename without 后缀 ：name
+    index = name.rfind('.')
+    name = name[:index]
+    for match_file_name  in delList:
+        i = 0
+        if name in match_file_name:
+            i = i+1
+            if i > 1 :
+                continue
+    if i == 1:
+        print("删除" + str(name))
+        if os.path.exists("C:/Users/chaiwenda/Desktop/MaiDong/" + str(name) + '.xml'):
+            os.remove("C:/Users/chaiwenda/Desktop/MaiDong/" + str(name) + '.xml')
+        if os.path.exists("C:/Users/chaiwenda/Desktop/MaiDong/" + str(name) + '.jpg'):
+            os.remove("C:/Users/chaiwenda/Desktop/MaiDong/" + str(name) + '.jpg')
