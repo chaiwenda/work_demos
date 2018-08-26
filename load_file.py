@@ -1,4 +1,8 @@
 import os
+
+"""
+    删除文件
+"""
 def file_extension(path):
   return os.path.splitext(path)[1]
 
